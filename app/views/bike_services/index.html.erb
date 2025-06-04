@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Bike services</h1>
+
+<% if @bike_services.any? %>
+  <div id="bike_services">
+    <% @bike_services.each do |bike_service| %>
+      <%= render bike_service %>
+      <p>
+        <%= link_to "Reparaciones", user_bike_services_path(@user) %>
+      </p>
+    <% end %>
+  </div>
+<% else %>
+  <p>No tiene servicios registrados</p>
+  <%= link_to "Volver al usuario", user_path(@user) %>
+<% end %>
