@@ -1,15 +1,9 @@
-<div class="p-3 d-flex">
-  <div>
-    <p>
-      <strong>Nombre:</strong>
-      <%= user.nombre %>
-    </p>
 
-    <p>
-      <strong>Apellido:</strong>
-      <%= user.apellido %>
-    </p>
+<div class="card" style="width: 18rem;">
 
+  <div class="card-body">
+
+    <h5 class="card-title"><%= user.nombre %> <%= user.apellido %></h5>
     <p>
       <strong>Telefono:</strong>
       <%= user.telefono %>
@@ -19,6 +13,12 @@
       <strong>Email:</strong>
       <%= user.email %>
     </p>
+
+    <div class="users-index-links">
+      <%= link_to "Mostrar usuario", user, class:"btn btn-sm btn-outline-success" %>
+      <%= link_to "Borrar cliente", user_path(user), method: :delete, data: { confirm: "¿Estás seguro que quieres borrar este cliente?" }, class: "btn btn-sm btn-outline-danger" %>
+    </div>
+
   </div>
 
 </div>
