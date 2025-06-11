@@ -1,6 +1,6 @@
 <%= form_with(model: [@user, @bike_service], local: true) do |form| %>
   <% if bike_service.errors.any? %>
-    <div style="color: red">
+    <div class="alert alert-danger" role="alert">
       <h2><%= pluralize(bike_service.errors.count, "error") %> prohibited this bike_service from being saved:</h2>
 
       <ul>
