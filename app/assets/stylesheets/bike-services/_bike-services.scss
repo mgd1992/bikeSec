@@ -1,0 +1,11 @@
+.bike-service-list{
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.bike-service-item{
+  border-bottom: 1px dashed #ccc;
+}

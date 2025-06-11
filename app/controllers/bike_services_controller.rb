@@ -1,5 +1,5 @@
 class BikeServicesController < ApplicationController
-  before_action :set_bike_service, only: %i[ show edit update destroy ]
+  before_action :set_bike_service, only: %i[ show destroy ]
 
 
   def index
@@ -18,47 +18,49 @@ class BikeServicesController < ApplicationController
   end
 
 
-  def edit
-  end
+  # def edit
+  # end
 
 
   def create
     @user = User.find(params[:user_id])
     @bike_service = @user.bike_services.build(bike_service_params)
     if @bike_service.save
-      redirect_to user_bike_services_path(@user), notice: 'Servicio de bicicleta creado exitosamente.'
+      redirect_to @user, notice: 'Servicio de bicicleta creado exitosamente.'
     else
       render :new
     end
   end
 
 
-  def update
-    respond_to do |format|
-      if @bike_service.update(bike_service_params)
-        format.html { redirect_to @bike_service, notice: "Servicio de bicicleta actualizado exitosamente." }
-        format.json { render :show, status: :ok, location: @bike_service }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @bike_service.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @bike_service.update(bike_service_params)
+  #       format.html { redirect_to @user, notice: "Servicio de bicicleta actualizado exitosamente." }
+  #       format.json { render :show, status: :ok, location: @bike_service }
+  #     else
+  #       format.html { render :edit, status: :unprocessable_entity }
+  #       format.json { render json: @bike_service.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
 
   def destroy
-    @bike_service.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to user_bike_services_path, status: :see_other, notice: "Bike service was successfully destroyed." }
-      format.json { head :no_content }
+    if @bike_service.destroy
+      redirect_to user_path(@user), status: :see_other
+    else
+      render @user
     end
+
   end
 
   private
 
     def set_bike_service
-      @bike_service = BikeService.find(params[:id])
+      @user = User.find(params[:user_id])
+      @bike_service = @user.bike_services.find(params[:id])
     end
 
 

@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    @user_services = @user.bike_services.order(date: :desc)
+    @total_price_services = @user_services.sum(:cost)
   end
 
   # GET /users/new
@@ -46,11 +48,9 @@ class UsersController < ApplicationController
       end
     end
   end
-
-  # DELETE /users/1 or /users/1.json
   def destroy
 
-    if @user.destroy!
+    if @user.destroy
       redirect_to users_path, status: :see_other, notice: "Usuario eliminado"
     else
       render :index
@@ -58,12 +58,10 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:nombre, :apellido, :telefono, :email)
     end
