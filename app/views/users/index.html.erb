@@ -6,13 +6,14 @@
   <%= link_to "Crear cliente", new_user_path, class:"btn btn-outline-success w-25 text-center" %>
 </div>
 
-<div class="d-flex justify-content-around p-3 ">
+<div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="300">
   <% @users.each do |user| %>
     <%= render user %>
 
-    <div class="d-flex flex-column">
+    <div class="d-flex flex-column w-25">
       <%= link_to "Show this user", user, class:"btn btn-sm btn-outline-success mb-2" %>
       <%= link_to "Borrar cliente", user_path(user), method: :delete, data: { confirm: "¿Estás seguro que quieres borrar este cliente?" }, class: "btn btn-sm btn-outline-danger" %>
+
     </div>
   <% end %>
 </div>

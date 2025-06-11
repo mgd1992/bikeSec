@@ -1,17 +1,27 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Bike services</h1>
+<div class="d-flex flex-column justify-content-center p-3 ">
 
-<% if @bike_services.any? %>
-  <div id="bike_services">
-    <% @bike_services.each do |bike_service| %>
-      <%= render bike_service %>
-      <p>
-        <%= link_to "Reparaciones", user_bike_services_path(@user) %>
-      </p>
-    <% end %>
-  </div>
-<% else %>
-  <p>No tiene servicios registrados</p>
-  <%= link_to "Volver al usuario", user_path(@user) %>
-<% end %>
+  <h1 class="text-center mb-5">Reparaciones:</h1>
+  <%= link_to "Volver al usuario", user_path(@user), class:"btn btn-sm btn-outline-success mb-2 w-25"  %>
+
+
+</div>
+
+<div>
+
+  <% if @bike_services.any? %>
+    <div class="bike-service-card">
+      <% @bike_services.each do |bike_service| %>
+        <%= render bike_service %>
+      <% end %>
+
+    </div>
+
+  <% else %>
+
+    <p>Este usuario no tiene servicios registrados</p>
+    <%= link_to "Volver al usuario", user_path(@user), class:"btn btn-sm btn-outline-success mb-2"  %>
+
+  <% end %>
+</div>
