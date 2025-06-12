@@ -1,65 +1,69 @@
 <p style="color: green"><%= notice %></p>
 
-<div class="user-show">
-  <p>
-    <strong>Nombre:</strong>
-    <%= @user.nombre %>
-  </p>
+<div class="user-show-header">
 
-  <p>
-    <strong>Apellido:</strong>
-    <%= @user.apellido %>
-  </p>
-
-  <p>
-    <strong>Telefono:</strong>
-    <%= @user.telefono %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= @user.email %>
-  </p>
-
-  <p>
-    <strong class="fs-5">Total a pagar: <%= @total_price_services %>€ <strong>
-  </p>
-
-
-
-
-  <div class="user-show-links">
-
-    <%= link_to "Editar cliente", edit_user_path(@user), class:"btn btn-sm btn-outline-success" %>
-    <%= link_to "Nuevo servicio", new_user_bike_service_path(@user), class:"btn btn-sm btn-outline-success" %>
-    <%= link_to "Volver", users_path, class:"btn btn-sm btn-outline-success" %>
-
-  </div>
+  <h1 class="text-center">Ficha cliente</h1>
+  <%= link_to "Volver", users_path, class: "btn btn-sm btn-outline-secondary" %>
 
 </div>
 
-<div class="bike-service-list">
-  <% @user_services.each do |service| %>
-    <div data-aos="flip-left" class="bike-service-item">
+<div class="user-card">
+  <div class="user-card-info">
+    <h5 class="text-center mb-3 p-2 border w-50">Informacion del cliente:</h5>
 
-      <p>
-        <%= @user.id %>
-      </p>
-      <p>
-        Descripcion: <%= service.descripcion %>
-        <%= link_to "Borrar", user_bike_service_path(service.user, service) , method: :delete, data: { confirm: "¿Estás seguro que quieres borrar este servicio?" }, class: "btn btn-sm btn-outline-danger" %>
-      </p>
+    <p>
+      <strong>Nombre:</strong>
+      <%= @user.nombre %>
+    </p>
 
-      <p>
-        Fecha: <%= service.date %>
-      </p>
+    <p>
+      <strong>Apellido:</strong>
+      <%= @user.apellido %>
+    </p>
 
-      <p>
-        Precio: <%= service.cost %>€
-      </p>
+    <p>
+      <strong>Telefono:</strong>
+      <%= @user.telefono %>
+    </p>
 
+    <p>
+      <strong>Email:</strong>
+      <%= @user.email %>
+    </p>
 
+    <p>
+      <strong class="fs-5">Total a pagar: <%= @total_price_services %>€ <strong>
+    </p>
+
+    <div class="d-flex gap-2 mt-3">
+      <%= link_to "Editar cliente", edit_user_path(@user), class: "btn btn-sm btn-outline-success" %>
+      <%= link_to "Nuevo servicio", new_user_bike_service_path(@user), class: "btn btn-sm btn-outline-success" %>
     </div>
-  <% end %>
+  </div>
 
+
+  <div class="user-bike-services-list">
+    <h5 class="text-center mb-3 p-2 border w-50">Servicios:</h5>
+    <% @user_services.each do |service| %>
+      <div class="user-bike-services-item">
+
+        <div class="user-bike-services-info">
+
+          <p class="mb-1 mt-1">Descripción: <%= service.descripcion %></p>
+          <p class="mb-1">Fecha: <%= service.date.strftime("%d/%m/%Y") %></p>
+          <p class="mb-1">Precio: <%= number_to_currency(service.cost, unit: "€") %></p>
+
+        </div>
+
+        <div class="user-bike-services-links">
+
+          <%= link_to "Borrar", user_bike_service_path(service.user, service), method: :delete, data: { confirm: "¿Estás seguro que quieres borrar este servicio?" }, class: "btn btn-outline-danger" %>
+
+        </div>
+
+
+      </div>
+
+    <% end %>
+  </div>
 </div>
