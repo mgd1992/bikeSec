@@ -1,14 +1,20 @@
+.card{
+  height: fit-content;
+}
+
 .user-list{
+  height: 100vh;
   padding: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 10px;
-  border-top: 1px solid #e0dddd;
+  border-top: 1px solid #6D6466;
+  background-color: #9F9F92;
 }
 
 .card-title{
   text-align: center;
-  border: 1px solid #ccc;
+  border: 1px solid #6D6466;
   padding: 10px;
 }
 
