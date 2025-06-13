@@ -1,17 +1,5 @@
 <div class="mx-auto mt-5 w-50">
   <%= form_with(model: user, class: "needs-validation p-5 rounded bg-secondary ") do |form| %>
-    <% if user.errors.any? %>
-      <div class="alert alert-danger" role="alert">
-        <h2>Campos que faltan rellenar:</h2>
-
-        <ul>
-          <% user.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
     <div class="form-floating mb-3" >
       <%= form.text_field :nombre, class: "form-control", placeholder: "Nombre" %>
       <%= form.label :nombre %>
@@ -34,7 +22,7 @@
 
     <div>
       <%= form.submit "Guardar", class: "btn btn-outline-info mt-2" %>
-      <%= link_to "Volver", users_path, class:"btn btn-outline-info mt-2" %>
+      <%= link_to "Volver", user, class:"btn btn-outline-info mt-2" %>
     </div>
   <% end %>
 
