@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update destroy services_pdf ]
 
   # GET /users or /users.json
   def index
@@ -47,6 +47,22 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def services_pdf
+
+    @bike_services = @user.bike_services.order(date: :desc)
+
+    respond_to do |format|
+      format.pdf do
+        pdf = ServicePdf.new(@user, @bike_services)
+        send_data pdf.render,
+          filename: "servicios_#{@user.nombre}_#{Date.today}.pdf",
+          type: "application/pdf",
+          disposition: "inline"
+      end
+    end
+
   end
   def destroy
 
