@@ -30,14 +30,17 @@
       <strong>Email:</strong>
       <%= @user.email %>
     </p>
-
-    <p>
-      <strong class="fs-5">Total a pagar: <%= @total_price_services %>€ <strong>
-    </p>
+    <div class="d-flex flex-column justify-content-center text-center">
+      <p>
+        <strong class="fs-5">Total a pagar: <%= @total_price_services %>€ <strong>
+      </p>
+      <%= link_to "Generar PDF", services_pdf_user_path(@user, format: :pdf), target: "_blank", class: "btn btn-sm btn-outline-secondary mt-1" %>
+    </div>
 
     <div class="d-flex gap-2 mt-3">
       <%= link_to "Editar cliente", edit_user_path(@user), class: "btn btn-sm btn-outline-success" %>
       <%= link_to "Nuevo servicio", new_user_bike_service_path(@user), class: "btn btn-sm btn-outline-success" %>
+
     </div>
   </div>
 
