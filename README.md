@@ -1,24 +1,50 @@
-# README
+# 🚲 BikeSec
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**BikeSec** es una aplicación web para una bicicletería, diseñada para llevar un registro de los clientes y las reparaciones realizadas a sus bicicletas. Es una herramienta simple y útil para gestionar servicios, clientes y el historial de mantenimiento.
 
-Things you may want to cover:
+## 🛠️ Tecnologías utilizadas
 
-* Ruby version
+- Ruby on Rails
+- Stimulus.js
+- HTML
+- CSS
+- Bootstrap
 
-* System dependencies
+## 📂 ¿Qué permite hacer esta app?
 
-* Configuration
+- Registrar clientes.
+- Agregar servicios/reparaciones realizados.
+- Llevar el historial de cada bicicleta.
+- Organizar y consultar fácilmente los datos desde una interfaz web simple.
 
-* Database creation
+## 💻 Cómo ejecutar la app localmente
 
-* Database initialization
+1. Cloná este repositorio:
+   ```bash
+   git clone https://github.com/mgd1992/bikeSec.git
+Entrá a la carpeta del proyecto:
 
-* How to run the test suite
+```bash
+cd bikeSec
+```
+Instalá las dependencias:
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+bundle install
+```
+Creá la base de datos y aplicá las migraciones:
 
-* Deployment instructions
+```bash
+rails db:create
+rails db:migrate
+```
 
-* ...
+Iniciá el servidor:
+
+```bash
+rails s
+```
+Abrí tu navegador en:
+http://localhost:3000
+
+
