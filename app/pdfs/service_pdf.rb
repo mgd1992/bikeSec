@@ -1,7 +1,5 @@
 class ServicePdf < Prawn::Document
 
-  include Prawn::Table
-  
   def initialize(user, services)
     super(top_margin: 60, bottom_margin: 50, page_size: 'A4')
     @user = user
@@ -24,39 +22,42 @@ class ServicePdf < Prawn::Document
 
   def user_info
     move_down 20
-    text "Cliente:", size: 14, style: :bold
+    
     text "#{@user.nombre} #{@user.apellido}", size: 12
     text "Email: #{@user.email}", size: 12, style: :italic
-    text "Telefono: #{@user.email}", size: 12, style: :italic
+    text "Telefono: #{@user.telefono}", size: 12, style: :italic
     text "Fecha: #{I18n.l(Date.today)}", size: 10, style: :italic
   end
 
   def service_table
-    move_down 20
-    table_data = [["Descripción", "Fecha", "Precio"]]
-    total = 0
-
-    @services.each do |s|
-      total += s.cost
+    # Construir datos de la tabla
+    table_data = [["Fecha", "Descripción", "Costo"]]
+    @services.each do |service|
       table_data << [
-        s.descripcion,
-        s.date.strftime("%d/%m/%Y"),
-        "$#{'%.2f' % s.cost}"
+        service.date.strftime("%d/%m/%Y"),
+        service.descripcion,
+        format("$%.2f", service.cost)
       ]
     end
 
+    # Fila de total
+    total = @services.sum(&:cost)
     table_data << [
-      { content: "Total", colspan: 2, align: :right }, "$#{'%.2f' % total}"
+      { content: "Total", colspan: 2, align: :right },
+      format("$%.2f", total)
     ]
 
+    # Dibujar la tabla
     table(table_data, header: true, width: bounds.width) do
       row(0).font_style = :bold
-      row(0).background_color = 'cccccc'
-      self.row_colors = ['f0f0f0', 'ffffff']
+      row(0).background_color = 'CCCCCC'
+      self.row_colors = ['F0F0F0', 'FFFFFF']
       self.cell_style = { borders: [:bottom], padding: [8, 12, 8, 12] }
       row(-1).font_style = :bold
-      row(-1).background_color = 'eeeeee'
+      row(-1).background_color = 'EEEEEE'
     end
+
+    move_down 20
   end
 
   def footer

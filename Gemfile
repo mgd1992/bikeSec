@@ -28,7 +28,8 @@ gem "jbuilder"
 
 
 # Generar pdf
-gem 'prawn-rails'
+gem 'prawn'
+gem 'prawn-table'
 
 
 # Use Redis adapter to run Action Cable in production
