@@ -1,4 +1,7 @@
 class ServicePdf < Prawn::Document
+
+  include Prawn::Table
+  
   def initialize(user, services)
     super(top_margin: 60, bottom_margin: 50, page_size: 'A4')
     @user = user
