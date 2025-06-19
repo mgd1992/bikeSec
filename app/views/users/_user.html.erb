@@ -16,7 +16,7 @@
 
     <div class="users-index-links">
       <%= link_to "Mostrar usuario", user, class:"btn btn-sm btn-outline-success" %>
-      <%= link_to "Borrar cliente", users_path, method: :delete, data: { confirm: "¿Estás seguro que quieres borrar este cliente?" }, class: "btn btn-sm btn-outline-danger" %>
+      <%= link_to "Borrar cliente", user_path(user), method: :delete, data: { confirm: "¿Estás seguro que quieres borrar este cliente?" }, class: "btn btn-sm btn-outline-danger" %>
     </div>
 
   </div>
