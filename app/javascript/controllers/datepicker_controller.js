@@ -9,8 +9,7 @@ export default class extends Controller {
       time_24hr: true,
       dateFormat: "d/m/Y H:i",
       altInput: true,
-      altFormat: "j \\de F \\de Y, H:i",
-      locale: "es"
+      altFormat: "j \\de F \\de Y, H:i"
     })
   }
 }
