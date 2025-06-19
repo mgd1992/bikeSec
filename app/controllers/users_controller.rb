@@ -59,11 +59,10 @@ class UsersController < ApplicationController
 
   end
   def destroy
-
     if @user.destroy
       redirect_to users_path, status: :see_other, notice: "Usuario eliminado"
     else
-      render :index
+      redirect_to users_path, alert: "No se pudo eliminar el usuario."
     end
   end
 
