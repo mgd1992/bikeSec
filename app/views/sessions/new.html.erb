@@ -6,13 +6,13 @@
   <% end %>
 
   <div style="margin-bottom: 10px;">
-    <%= label_tag :email %><br>
-    <%= text_field_tag :email, params[:email], style: "padding: 5px; width: 250px;" %>
+    <%= label_tag :email, "Email" %><br>
+    <%= text_field_tag :email, params[:email], style: "padding: 5px; width: 250px;", autocomplete: "email" %>
   </div>
 
   <div style="margin-bottom: 10px;">
-    <%= label_tag :password %><br>
-    <%= password_field_tag :password, nil, style: "padding: 5px; width: 250px;" %>
+    <%= label_tag :password, "Contraseña" %><br>
+    <%= password_field_tag :password, nil, style: "padding: 5px; width: 250px;", autocomplete: "current-password" %>
   </div>
 
   <div>

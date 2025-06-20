@@ -18,6 +18,8 @@ class SessionsController < ApplicationController
       flash.now[:alert] = "Email o contraseña incorrectos"
       render :new, status: :unprocessable_entity
     end
+    puts params.inspect
+    
   end
 
   def destroy
