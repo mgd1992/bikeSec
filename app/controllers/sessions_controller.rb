@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     admin = Admin.find_by(email: params[:email])
 
     if params[:email].blank? || params[:password].blank?
-      flash.now[:alert] = "Por favor revisa todos los campos"
+      flash[:alert] = "Por favor revisa todos los campos"
       redirect_to login_path
       return
     end
