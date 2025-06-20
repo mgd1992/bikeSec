@@ -3,15 +3,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    admin = Admin.find_by(email: params[:email])
+    admin = Admin.find_by(email: login_params[:email])
 
-    if params[:email].blank? || params[:password].blank?
-      flash[:alert] = "Por favor revisa todos los campos"
-      redirect_to login_path
-      return
-    end
-
-    if admin&.authenticate(params[:password])
+    if admin&.authenticate(login_params[:password])
     session[:admin_id] = admin.id
     redirect_to users_path
     else
