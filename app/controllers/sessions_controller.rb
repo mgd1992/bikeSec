@@ -19,11 +19,17 @@ class SessionsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
     puts params.inspect
-    
+
   end
 
   def destroy
     session[:admin_id] = nil
     redirect_to login_path, notice: "Sesión cerrada"
+  end
+
+  private
+
+  def login_params
+    params.permit(:email, :password)
   end
 end
