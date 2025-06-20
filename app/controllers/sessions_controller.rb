@@ -3,20 +3,20 @@ class SessionsController < ApplicationController
   end
 
   def create
+    admin = Admin.find_by(email: params[:email])
 
     if params[:email].blank? || params[:password].blank?
       flash.now[:alert] = "Por favor revisa todos los campos"
-      render :new
+      redirect_to login_path
       return
     end
 
-    admin = Admin.find_by(email: params[:email])
     if admin&.authenticate(params[:password])
-      session[:admin_id] = admin.id
-      redirect_to users_path, notice: "Sesión iniciada"
+    session[:admin_id] = admin.id
+    redirect_to users_path
     else
       flash.now[:alert] = "Email o contraseña incorrectos"
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
