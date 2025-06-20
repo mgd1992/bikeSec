@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
     if params[:email].blank? || params[:password].blank?
       flash.now[:alert] = "Por favor revisa todos los campos"
-      render :new
+      redirect_to login_path
       return
     end
 
