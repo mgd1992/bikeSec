@@ -7,6 +7,10 @@
   <%= link_to "Crear cliente", new_user_path, class:"btn btn-outline-success w-25 text-center btn-sm" %>
 </div>
 
+<% if current_admin %>
+  <%= link_to "Cerrar sesión", logout_path, method: :delete, data: { confirm: "¿Seguro que querés cerrar sesión?" } %>
+<% end %>
+
 <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="300" class="user-list">
   <% @users.each do |user| %>
     <%= render user %>
