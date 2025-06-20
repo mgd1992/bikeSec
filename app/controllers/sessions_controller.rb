@@ -3,17 +3,17 @@ class SessionsController < ApplicationController
   end
 
   def create
+    puts login_params.inspect 
+
     admin = Admin.find_by(email: login_params[:email])
 
     if admin&.authenticate(login_params[:password])
-    session[:admin_id] = admin.id
-    redirect_to users_path
+      session[:admin_id] = admin.id
+      redirect_to users_path
     else
       flash.now[:alert] = "Email o contraseña incorrectos"
       render :new, status: :unprocessable_entity
     end
-    puts params.inspect
-
   end
 
   def destroy
