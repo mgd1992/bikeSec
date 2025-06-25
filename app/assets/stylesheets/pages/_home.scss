@@ -8,11 +8,15 @@
   align-items: center;
 }
 
-.h1{
-  font-size: 80px;
-  margin-bottom: 30px;
-  color: #9F9F92;
-  letter-spacing: 2px;
+.logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img{
+  width: 100px;
+  height: 100px;
 }
 
 .p{

@@ -14,6 +14,7 @@ class ServicePdf < Prawn::Document
 
   def header
     text "BikeSec - Factura", size: 20, style: :bold, align: :center
+    image "#{Rails.root}/app/assets/images/bikesec-logo1.png", width: 80, position: :center
     text "Carrer del Poeta Cabanyes, 45, Poble-sec, 08004 Barcelona", size: 8, align: :center, style: :italic
     text "Telefono: 658236333", size: 8, align: :center, style: :italic
     move_down 5
@@ -22,7 +23,7 @@ class ServicePdf < Prawn::Document
 
   def user_info
     move_down 20
-    
+
     text "#{@user.nombre} #{@user.apellido}", size: 12
     text "Email: #{@user.email}", size: 12, style: :italic
     text "Telefono: #{@user.telefono}", size: 12, style: :italic
@@ -30,7 +31,7 @@ class ServicePdf < Prawn::Document
   end
 
   def service_table
-    # Construir datos de la tabla
+
     table_data = [["Fecha", "Descripción", "Costo"]]
     @services.each do |service|
       table_data << [
@@ -40,14 +41,12 @@ class ServicePdf < Prawn::Document
       ]
     end
 
-    # Fila de total
     total = @services.sum(&:cost)
     table_data << [
       { content: "Total", colspan: 2, align: :right },
       format("$%.2f", total)
     ]
 
-    # Dibujar la tabla
     table(table_data, header: true, width: bounds.width) do
       row(0).font_style = :bold
       row(0).background_color = 'CCCCCC'
@@ -65,7 +64,6 @@ class ServicePdf < Prawn::Document
       stroke_horizontal_rule
       move_down 10
       text "- Gracias por confiar en BikeSec -", size: 10, align: :center, style: :italic
-
     end
   end
 end
