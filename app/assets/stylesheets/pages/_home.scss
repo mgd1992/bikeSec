@@ -1,0 +1,21 @@
+.home{
+  background-color: #E3DBDB;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.h1{
+  font-size: 80px;
+  margin-bottom: 30px;
+  color: #9F9F92;
+  letter-spacing: 2px;
+}
+
+.p{
+  font-size: 36px;
+  font-family: 'Cambria', 'Cochin', 'Georgia', 'Times', 'Times New Roman', 'serif';
+}
