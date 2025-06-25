@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-  before_action :require_admin
   before_action :set_user, only: %i[ show edit update destroy services_pdf ]
 
   def index
-    @clientes = User.where(admin: [false, nil])
+    @users = User.all
   end
 
   def show
