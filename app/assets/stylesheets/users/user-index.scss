@@ -1,7 +1,7 @@
 $border-color: #6D6466;
 $background-color: #9F9F92;
 $padding: 8px;
-$card-height: 200px; /
+$card-height: 200px;
 $gap: 16px;
 $vertical-margin: 4px;
 
@@ -10,35 +10,18 @@ $vertical-margin: 4px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: $vertical-margin 0;
-  transition: transform 0.2s;
   background-color: white;
   border: 1px solid $border-color;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
 }
 
 .user-list {
-  height: 100vh;
+  height: fit-content;
   padding: 20px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: $gap;
   border-top: 1px solid $border-color;
   background-color: $background-color;
-
-  @media (max-width: 1000px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 500px) {
-    grid-template-columns: 1fr;
-  }
 }
 
 .card-title {
@@ -54,4 +37,28 @@ $vertical-margin: 4px;
   justify-content: center;
   align-items: center;
   gap: 8px;
+}
+
+@media(max-width: 1240px){
+  .card{
+    height: 250px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .user-list{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .user-list{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .user-list{
+    grid-template-columns: 1fr;
+  }
 }
