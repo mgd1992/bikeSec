@@ -18,10 +18,6 @@ class BikeServicesController < ApplicationController
   end
 
 
-  # def edit
-  # end
-
-
   def create
     @user = User.find(params[:user_id])
     @bike_service = @user.bike_services.build(bike_service_params)
@@ -32,29 +28,14 @@ class BikeServicesController < ApplicationController
     end
   end
 
-
-  # def update
-  #   respond_to do |format|
-  #     if @bike_service.update(bike_service_params)
-  #       format.html { redirect_to @user, notice: "Servicio de bicicleta actualizado exitosamente." }
-  #       format.json { render :show, status: :ok, location: @bike_service }
-  #     else
-  #       format.html { render :edit, status: :unprocessable_entity }
-  #       format.json { render json: @bike_service.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-
   def destroy
-
     if @bike_service.destroy
-      redirect_to user_path(@user), status: :see_other
+      redirect_to user_path(@user), status: :see_other, notice: "Servicio eliminado exitosamente."
     else
-      render @user
+      redirect_to user_path(@user), alert: "No se pudo eliminar el servicio."
     end
-
   end
+
 
   private
 
