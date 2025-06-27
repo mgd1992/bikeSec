@@ -1,58 +1,67 @@
-.user-show-header{
+$background-color: #c9c2c2;
+$text-color: #201f1f;
+$border-color: #ccc;
+$hover-shadow: rgba(0, 0, 0, 0.1);
+$padding: 16px;
+$border-radius: 16px;
+
+.user-show-header {
   width: 100%;
   height: 100px;
-  background-color: #c9c2c2;
-  color: #201f1f;
+  background-color: $background-color;
+  color: $text-color;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
-.user-card{
+.user-card {
   width: 100%;
   height: 100vh;
   display: grid;
   grid-template-columns: 40% 60%;
-  padding: 20px;
+  padding: $padding;
   margin-top: 16px;
+  gap: 16px;
 }
 
-
-.user-card-info{
+.user-card-info {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-right: 2px solid #ccc;
+  border-right: 2px solid $border-color;
+  padding-right: $padding;
 }
 
-.user-bike-services-list{
+.user-bike-services-list {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px 16px;
+  padding: 0 $padding;
 }
 
-.user-bike-services-item{
+.user-bike-services-item {
   width: 100%;
   height: fit-content;
   border: 1px solid rgb(116, 115, 115);
-  border-radius: 15px;
-  padding: 4px 16px;
+  border-radius: $border-radius;
+  padding: 8px $padding;
   margin-top: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px $hover-shadow;
+  }
 }
 
 .user-bike-services-item p {
-  margin-bottom: 0px;
+  margin: 0;
   font-size: 1rem;
   color: #333;
 }
-
-.user-bike-services-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
-  }
