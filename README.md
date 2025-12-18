@@ -53,5 +53,5 @@ Abrí la aplicación en:
 
 **Usuario administrador**
 ```text
-Email: admin@bikese.com
+Email: admin@bikesec.com
 Password: bikeSec123
