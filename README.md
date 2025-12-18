@@ -44,7 +44,14 @@ Iniciá el servidor:
 ```bash
 rails s
 ```
-Abrí tu navegador en:
-http://localhost:3000
 
+## 🔐 Credenciales de acceso
 
+Abrí la aplicación en:
+
+👉 http://localhost:3000
+
+**Usuario administrador**
+```text
+Email: admin@bikese.com
+Password: bikeSec123
